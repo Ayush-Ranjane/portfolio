@@ -3,99 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="\images\favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="\images\favicon.png">
     <title>Ayush Ranjane | AI & Data Science Engineer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #6366f1;
-            --secondary: #a855f7;
-            --bg-dark: #0f172a;
-        }
-
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-dark);
-            color: #f8fafc;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 1.5rem;
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .gradient-bg {
-            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-        }
-
-        #hero-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.6;
-        }
-
-        .skill-badge {
-            padding: 0.5rem 1.25rem;
-            background: rgba(99, 102, 241, 0.1);
-            border: 1px solid rgba(99, 102, 241, 0.2);
-            border-radius: 9999px;
-            transition: all 0.3s ease;
-        }
-
-        .skill-badge:hover {
-            background: rgba(99, 102, 241, 0.2);
-            transform: translateY(-2px);
-            border-color: var(--primary);
-        }
-
-        .card-hover {
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .card-hover:hover {
-            transform: translateY(-10px) scale(1.02);
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .animate-float {
-            animation: float 4s ease-in-out infinite;
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body class="antialiased">
 
@@ -103,7 +17,7 @@
     <nav class="fixed top-0 w-full z-50 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center glass px-6 py-3">
             <div class="text-xl font-extrabold tracking-tighter">
-                <span class="gradient-text">AR.</span>
+                <img src="/images/logo_b_w.png" alt="Logo" class="w-10 h-10 inline-block mr-2 -mt-1">
             </div>
             <div class="hidden md:flex space-x-8 text-sm font-medium">
                 <a href="#about" class="hover:text-indigo-400 transition-colors">About</a>
@@ -120,7 +34,7 @@
         <canvas id="hero-canvas"></canvas>
         <div class="max-w-4xl text-center z-10">
             <div class="inline-block px-4 py-1.5 mb-6 glass text-xs font-semibold uppercase tracking-[0.2em] text-indigo-300 animate-float">
-                Available for ML Internships
+                Available for Internships
             </div>
             <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight">
                 Ayush Ranjane
@@ -156,19 +70,16 @@
                 <div class="relative glass p-8 md:p-12 border-indigo-500/20">
                     <h2 class="text-3xl font-bold mb-6">About Me</h2>
                     <p class="text-slate-300 leading-relaxed mb-6 text-lg">
-                        I’m Ayush Ranjane, an Artificial Intelligence and Data Science student (Class of 2027) with a knack for turning complex data into intelligent solutions. Based in Pune, currently pursuing my B.E. at Dr. D. Y. Patil Institute.
-                    </p>
-                    <p class="text-slate-300 leading-relaxed mb-8">
-                        My journey involves a blend of software development and hardware integration. I am passionate about bridging the gap between theoretical data science and practical, real-world applications. My focus lies in building intelligent systems that solve complex problems, ranging from digital platforms to autonomous hardware solutions.
+                        I am a motivated Artificial Intelligence and Data Science undergraduate currently pursuing my Bachelor’s degree at Dr. D. Y. Patil Institute of Engineering, Management and Research, Pune, with graduation expected in 2027. I have hands-on experience in building and deploying machine learning–based applications, combining strong analytical thinking with practical software development skills
                     </p>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="glass p-4">
-                            <h4 class="text-indigo-400 font-bold text-2xl mb-1">Class of</h4>
-                            <p class="text-slate-400 text-sm">2027 Graduation</p>
+                            <h4 class="text-indigo-400 font-bold text-2xl mb-1">Year of Graduation</h4>
+                            <p class="text-slate-400 text-sm">2027</p>
                         </div>
                         <div class="glass p-4">
                             <h4 class="text-purple-400 font-bold text-2xl mb-1">3+</h4>
-                            <p class="text-slate-400 text-sm">Languages Spoken</p>
+                            <p class="text-slate-400 text-sm">Skills</p>
                         </div>
                     </div>
                 </div>
@@ -232,9 +143,9 @@
                     <div class="flex flex-wrap gap-3">
                         <span class="skill-badge">Machine Learning</span>
                         <span class="skill-badge">PyTorch</span>
-                        <span class="skill-badge">FastAPI</span>
-                        <span class="skill-badge">Arduino</span>
+                        <span class="skill-badge">Power BI</span>
                         <span class="skill-badge">Data Analysis</span>
+                        <span class="skill-badge">Data Preprocessing</span>
                     </div>
                 </div>
 
@@ -245,11 +156,10 @@
                     </div>
                     <h3 class="text-xl font-bold mb-6">Communication</h3>
                     <div class="flex flex-wrap gap-3">
-                        <span class="skill-badge">English (Fluent)</span>
+                        <span class="skill-badge">English</span>
                         <span class="skill-badge">Hindi</span>
                         <span class="skill-badge">Marathi</span>
-                        <span class="skill-badge">German (Basic)</span>
-                        <span class="skill-badge">Critical Thinking</span>
+                        <span class="skill-badge">German (Elementary Proficiency)</span>
                     </div>
                 </div>
             </div>
@@ -337,8 +247,11 @@
                 <a href="mailto:ayushranjane@gmail.com" class="px-10 py-5 gradient-bg rounded-2xl font-bold text-lg hover:scale-105 transition-transform shadow-xl shadow-indigo-500/20">
                     Get in Touch
                 </a>
-                <a href="https://linkedin.com/in/ayush-ranjane" target="_blank" class="px-10 py-5 bg-white/5 border border-white/10 rounded-2xl font-bold text-lg hover:bg-white/10 transition-colors">
+                <a href="https://www.linkedin.com/in/ayush-ranjane-61051b303/" target="_blank" class="px-10 py-5 bg-white/5 border border-white/10 rounded-2xl font-bold text-lg hover:bg-white/10 transition-colors">
                     LinkedIn Profile
+                </a>
+                <a href="https://github.com/Ayush-Ranjane" target="_blank" class="px-10 py-5 bg-white/5 border border-white/10 rounded-2xl font-bold text-lg hover:bg-white/10 transition-colors">
+                    GitHub Profile
                 </a>
             </div>
         </div>
@@ -353,89 +266,13 @@
             </div>
             <div class="flex gap-8 text-slate-400 text-sm font-medium">
                 <a href="https://github.com/Ayush-Ranjane" target="_blank" class="hover:text-white transition-colors">GitHub</a>
-                <a href="https://linkedin.com/in/ayush-ranjane" target="_blank" class="hover:text-white transition-colors">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/ayush-ranjane-61051b303/" target="_blank" class="hover:text-white transition-colors">LinkedIn</a>
                 <a href="mailto:ayushranjane@gmail.com" class="hover:text-white transition-colors">Email</a>
             </div>
             <p class="text-slate-600 text-xs uppercase tracking-widest">© 2024 Ayush Ranjane. All rights reserved.</p>
         </div>
     </footer>
 
-    <script>
-        // Three.js Particle Background
-        const canvas = document.querySelector('#hero-canvas');
-        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        
-        camera.position.z = 5;
-
-        const particlesGeometry = new THREE.BufferGeometry();
-        const particlesCount = 1500;
-        const posArray = new Float32Array(particlesCount * 3);
-
-        for(let i = 0; i < particlesCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 15;
-        }
-
-        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        const material = new THREE.PointsMaterial({
-            size: 0.005,
-            color: '#6366f1',
-            transparent: true,
-            opacity: 0.8
-        });
-
-        const particlesMesh = new THREE.Points(particlesGeometry, material);
-        scene.add(particlesMesh);
-
-        function resize() {
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-        }
-
-        window.addEventListener('resize', resize);
-        resize();
-
-        let mouseX = 0;
-        let mouseY = 0;
-
-        window.addEventListener('mousemove', (event) => {
-            mouseX = event.clientX / window.innerWidth - 0.5;
-            mouseY = event.clientY / window.innerHeight - 0.5;
-        });
-
-        function animate() {
-            requestAnimationFrame(animate);
-            particlesMesh.rotation.y += 0.001;
-            particlesMesh.rotation.x += 0.001;
-
-            particlesMesh.position.x = mouseX * 0.5;
-            particlesMesh.position.y = -mouseY * 0.5;
-
-            renderer.render(scene, camera);
-        }
-
-        animate();
-
-        // Reveal animations on scroll
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('opacity-100');
-                    entry.target.classList.remove('opacity-0', 'translate-y-10');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('section').forEach(section => {
-            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
-            observer.observe(section);
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
-</html></html>
+</html>
