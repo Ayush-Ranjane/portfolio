@@ -47,12 +47,7 @@ Then open `http://localhost:8000`.
 - Update project links, profile links, and contact details in the page source
 
 ## Deployment
-
-This portfolio can be deployed easily to static hosting providers such as:
-
-- Vercel
-- Netlify
-- GitHub Pages
+Live - https://portfolio-seven-beta-vt5k5cpfg7.vercel.app/
 
 ## License
 
