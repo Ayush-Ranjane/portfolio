@@ -7,12 +7,21 @@
   <title>Ayush Ranjane — AI & ML Engineer</title>
   <meta name="description"
     content="AI & Data Science specialist building intelligent systems for predictive analytics, time-series forecasting, and environmental intelligence." />
+  <meta name="theme-color" content="#0b0c10">
+  <meta name="color-scheme" content="dark light">
+  <meta property="og:title" content="Ayush Ranjane - AI & ML Engineer">
+  <meta property="og:description"
+    content="AI & Data Science portfolio focused on predictive analytics, forecasting, anomaly detection, and production-style AI systems.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/profile-400.jpg">
   <link rel="icon" type="image/x-icon" href="images/favicon.png">
+  <link rel="preload" as="image" href="images/profile-400.jpg" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
+  <!-- Production note: for a deployed build, compile Tailwind locally and replace the CDN with a purged CSS file. -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -59,7 +68,6 @@
       darkMode: 'class'
     };
   </script>
-  <script src="https://unpkg.com/feather-icons"></script>
   <style>
     :root {
       --ring: rgba(255, 122, 0, .35);
@@ -71,6 +79,19 @@
     body {
       background: #0b0c10;
       color: #e5e7eb;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    img,
+    svg {
+      max-width: 100%;
     }
 
     .gradient-text {
@@ -84,10 +105,13 @@
       position: relative;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: .6rem;
       padding: 1rem 1.5rem;
       border-radius: 12px;
       font-weight: 600;
+      min-height: 48px;
+      white-space: nowrap;
       transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -143,6 +167,7 @@
 
     .marquee-track {
       width: 200%;
+      min-width: max-content;
     }
 
     .skill-bar {
@@ -159,13 +184,23 @@
     }
 
     .card {
+      will-change: transform;
       transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-6px) scale(1.01);
       box-shadow: 0 20px 40px rgba(0, 0, 0, .4), 0 0 20px rgba(255, 122, 0, .15);
       border-color: rgba(255, 122, 0, .5);
+    }
+
+    .btn:focus-visible,
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid rgba(255, 171, 77, .8);
+      outline-offset: 3px;
     }
 
     section {
@@ -173,10 +208,102 @@
       padding-bottom: 1rem;
     }
 
+    .cv-auto {
+      content-visibility: auto;
+      contain-intrinsic-size: 1px 680px;
+    }
+
     .avatar-ring {
       background: conic-gradient(from 180deg at 50% 50%, #ffab4d, #ff7a00, #ffab4d);
       padding: 3px;
       border-radius: 999px;
+    }
+
+    .typing-caret::after {
+      content: "";
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      margin-left: .25rem;
+      background: #ffab4d;
+      vertical-align: -.12em;
+      animation: caretBlink 1s steps(1) infinite;
+    }
+
+    @keyframes caretBlink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .metric-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255, 122, 0, .14), rgba(255, 255, 255, 0) 46%);
+      opacity: 0;
+      transition: opacity .3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+
+    .metric-card:hover::before {
+      opacity: 1;
+    }
+
+    .modal-backdrop {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s ease;
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-panel {
+      transform: translateY(16px) scale(.98);
+      transition: transform .25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .modal-backdrop.open .modal-panel {
+      transform: translateY(0) scale(1);
+    }
+
+    .menu-panel {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transform: translateY(-8px);
+      transition: max-height .35s ease, opacity .25s ease, transform .25s ease;
+    }
+
+    .menu-panel.open {
+      max-height: 420px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .menu-line {
+      transform-origin: center;
+      transition: transform .25s ease, opacity .2s ease;
+    }
+
+    .menu-toggle.open .menu-line:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-toggle.open .menu-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.open .menu-line:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
     }
 
     .signature path {
@@ -191,30 +318,47 @@
       }
     }
 
-    @media (max-width: 768px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
+    @media (max-width: 639px) {
+      .btn {
+        width: 100%;
+        padding-inline: 1.1rem;
+      }
+
+      .card:hover {
+        transform: translateY(-3px) scale(1.005);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
       }
     }
   </style>
 </head>
 
-<body class="font-sans antialiased selection:bg-accent-300/30 selection:text-white">
+<body class="overflow-x-hidden font-sans antialiased selection:bg-accent-300/30 selection:text-white">
   <div class="fixed inset-0 -z-10 blob"></div>
 
   <!-- Header -->
   <header class="sticky top-0 z-50 backdrop-blur-xl bg-base-900/60 border-b border-white/5">
-    <div class="container max-w-7xl flex items-center justify-between py-3">
-      <a href="#" class="flex items-center gap-3 group">
+    <div class="container max-w-7xl">
+      <div class="flex items-center justify-between gap-3 py-3">
+      <a href="#" class="flex min-w-0 items-center gap-3 group">
         <div class="h-9 w-9 rounded-full avatar-ring">
-          <img id="navAvatar" alt="Avatar" class="h-full w-full rounded-full object-cover block"
-            src="https://avatars.githubusercontent.com/u/9919?s=40&v=4">
+          <img id="navAvatar" alt="Avatar" width="36" height="36" decoding="async" class="h-full w-full rounded-full object-cover block"
+            src="images/profile-400.jpg">
         </div>
-        <div class="text-sm leading-tight">
-          <div class="font-display font-extrabold text-white tracking-tight">
+        <div class="min-w-0 text-sm leading-tight">
+          <div class="truncate font-display font-extrabold text-white tracking-tight">
             <span id="brandName">Portfolio</span>
           </div>
-          <div class="text-white/60 -mt-0.5">AI/ML Engineer</div>
+          <div class="truncate text-white/60 -mt-0.5">AI/ML Engineer</div>
         </div>
       </a>
       <nav class="hidden md:flex items-center gap-7 text-sm">
@@ -227,45 +371,74 @@
           <i data-feather="github" class="w-5 h-5"></i> GitHub
         </a>
       </nav>
-      <button id="themeToggle" aria-label="Theme" class="btn btn-ghost md:ml-3">
-        <i data-feather="moon" class="w-5 h-5"></i>
-      </button>
+      <div class="flex shrink-0 items-center gap-2 md:ml-3">
+        <button id="themeToggle" aria-label="Theme" class="btn btn-ghost !h-11 !min-h-0 !w-11 !p-0">
+          <i data-feather="moon" class="w-5 h-5"></i>
+        </button>
+        <button id="menuToggle" type="button" aria-label="Menu" aria-controls="mobileMenu" aria-expanded="false"
+          class="menu-toggle btn btn-ghost !h-11 !min-h-0 !w-11 !p-0 md:hidden">
+          <span class="flex h-4 w-5 flex-col justify-between">
+            <span class="menu-line block h-0.5 w-5 rounded-full bg-current"></span>
+            <span class="menu-line block h-0.5 w-5 rounded-full bg-current"></span>
+            <span class="menu-line block h-0.5 w-5 rounded-full bg-current"></span>
+          </span>
+        </button>
+      </div>
+      </div>
+      <nav id="mobileMenu" class="menu-panel md:hidden">
+        <div class="glass mb-3 grid gap-1 rounded-2xl p-2 text-sm">
+          <a href="#projects" class="mobile-nav-link rounded-xl px-4 py-3 text-white/80 hover:bg-white/5 hover:text-white">Projects</a>
+          <a href="#skills" class="mobile-nav-link rounded-xl px-4 py-3 text-white/80 hover:bg-white/5 hover:text-white">Skills</a>
+          <a href="#about" class="mobile-nav-link rounded-xl px-4 py-3 text-white/80 hover:bg-white/5 hover:text-white">About</a>
+          <a href="#contact" class="mobile-nav-link rounded-xl px-4 py-3 text-white/80 hover:bg-white/5 hover:text-white">Contact</a>
+          <a id="mobileGithubLink" href="https://github.com/Ayush-Ranjane" target="_blank" rel="noreferrer"
+            class="mobile-nav-link btn btn-ghost !mt-1 !w-full !py-3">
+            <i data-feather="github" class="w-5 h-5"></i> GitHub
+          </a>
+        </div>
+      </nav>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="container max-w-7xl pt-10 md:pt-16">
-    <div class="grid hero-grid gap-10 items-center">
-      <div class="order-2 md:order-1">
-        <div class="inline-flex items-center gap-2 rounded-full px-3 py-1 glass text-xs text-white/80 mb-5">
+  <section class="container max-w-7xl pt-8 sm:pt-10 md:pt-16">
+    <div class="grid grid-cols-1 items-center gap-10 md:grid-cols-[minmax(0,1.15fr)_minmax(280px,.85fr)] lg:gap-14">
+      <div class="order-2 min-w-0 text-center md:order-1 md:text-left">
+        <div class="inline-flex max-w-full items-center gap-2 rounded-full px-3 py-1 glass text-xs text-white/80 mb-5">
           <span class="inline-block h-2.5 w-2.5 rounded-full bg-accent-500 animate-ping"></span>
-          Open for opportunities and collaborations
+          <span class="truncate">Open for opportunities and collaborations</span>
         </div>
-        <h1 class="font-display font-extrabold leading-tight text-4xl sm:text-5xl md:text-6xl text-white mb-3">
+        <h1 class="font-display font-extrabold leading-tight text-3xl min-[380px]:text-4xl sm:text-5xl lg:text-6xl text-white mb-3">
           AI Engineer Building <span class="text-accent-400">Real-Time Intelligent Systems</span>
         </h1>
-        <h2 class="font-display text-2xl md:text-3xl text-white/80 font-bold mb-6">
+        <h2 class="font-display text-xl sm:text-2xl md:text-3xl text-white/80 font-bold mb-5 sm:mb-6">
           Ayush Ranjane
         </h2>
-        <p class="text-white/70 text-base md:text-lg max-w-2xl mb-10 leading-relaxed">
+        <div class="mb-5 inline-flex items-center rounded-full border border-accent-500/20 bg-accent-500/10 px-3 py-1.5 text-sm font-semibold text-accent-200">
+          <span id="roleRotator" class="typing-caret inline-block min-w-[112px]">AI Engineer</span>
+        </div>
+        <p class="mx-auto text-white/70 text-base md:mx-0 md:text-lg max-w-2xl mb-8 sm:mb-10 leading-relaxed">
           AI &amp; Data Science engineer focused on predictive analytics, time-series forecasting, and scalable machine
           learning systems. I build end-to-end AI solutions with real-world impact.
         </p>
-        <div class="flex flex-wrap items-center gap-3">
+        <div class="flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center md:justify-start">
           <a href="#projects" class="btn btn-primary">
             <i data-feather="layers" class="w-5 h-5"></i> View Projects
           </a>
           <a href="#contact" class="btn btn-ghost">
             <i data-feather="send" class="w-5 h-5"></i> Contact Me
           </a>
+          <a href="#impact" class="btn btn-ghost">
+            <i data-feather="trending-up" class="w-5 h-5"></i> See Impact
+          </a>
           <a href="doc/resume.pdf" target="_blank" class="btn btn-ghost">
             <i data-feather="download" class="w-5 h-5"></i> Download résumé
           </a>
         </div>
 
-        <div class="mt-10 glass rounded-2xl p-4 md:p-5 border border-white/10">
+        <div class="mt-8 sm:mt-10 glass rounded-2xl p-4 md:p-5 border border-white/10">
           <div class="overflow-hidden rounded-xl">
-            <div class="marquee-track flex items-center gap-10 animate-marquee whitespace-nowrap py-2">
+            <div class="marquee-track flex items-center gap-7 sm:gap-10 animate-marquee whitespace-nowrap py-2 text-sm sm:text-base">
               <span class="text-white/70">Data</span>
               <div class="h-1 w-10 bg-white/10 rounded"></div>
               <span class="gradient-text font-semibold">Model</span>
@@ -286,17 +459,22 @@
         </div>
       </div>
 
-      <div class="order-1 md:order-2 flex justify-center relative">
+      <div class="order-1 flex justify-center relative md:order-2">
         <div class="absolute -inset-6 md:-inset-10 rounded-full opacity-70 blur-2xl animate-pulseSoft"
           style="background: radial-gradient(120px 120px at 70% 20%, rgba(255,122,0,.45), rgba(0,0,0,0));"></div>
-        <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full ring-4 ring-white/10 shadow-glow">
+        <div class="relative aspect-square w-[min(72vw,17rem)] sm:w-72 md:w-80 rounded-full ring-4 ring-white/10 shadow-glow">
           <div class="absolute inset-0 rounded-full p-1 bg-gradient-to-br from-accent-400/70 to-accent-600/70">
             <img id="heroAvatar"
-                src="https://avatars.githubusercontent.com/u/9919?s=200"
+                src="images/profile-400.jpg"
                 alt="Profile photo"
+                width="320"
+                height="320"
+                fetchpriority="high"
+                loading="eager"
+                decoding="async"
                 class="h-full w-full rounded-full object-cover ring-8 ring-base-900">
           </div>
-          <svg class="absolute -bottom-8 -left-8 w-40 h-24 signature" viewBox="0 0 300 120" fill="none">
+          <svg class="absolute -bottom-5 -left-3 w-28 sm:-bottom-8 sm:-left-8 sm:w-40 h-24 signature" viewBox="0 0 300 120" fill="none">
             <path d="M10 90 C40 30, 90 30, 110 90 S 180 120, 210 60 260 20, 290 90" stroke="url(#g)" stroke-width="5"
               stroke-linecap="round" />
             <defs>
@@ -312,9 +490,9 @@
   </section>
 
   <!-- Quick Stats -->
-  <section id="about" class="container max-w-7xl mt-20 md:mt-32">
-    <div class="grid md:grid-cols-3 gap-5">
-      <div class="glass rounded-2xl p-6 border card">
+  <section id="about" class="cv-auto container max-w-7xl mt-16 md:mt-24 lg:mt-32">
+    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="glass rounded-2xl p-5 sm:p-6 border card sm:col-span-2 lg:col-span-1">
         <div class="flex items-center gap-3 mb-3">
           <i data-feather="user" class="w-5 h-5 text-accent-400"></i>
           <h3 class="font-display font-bold text-white text-lg">About</h3>
@@ -324,18 +502,18 @@
           specialize in predictive modeling, anomaly detection, and full-stack AI integration. My work focuses on
           environmental intelligence and industrial-scale data systems.
         </p>
-        <div class="flex flex-wrap gap-4 mt-4 text-sm text-white/70">
+        <div class="flex flex-wrap gap-x-4 gap-y-3 mt-4 text-sm text-white/70">
           <span class="inline-flex items-center gap-1"><i data-feather="map-pin" class="w-4 h-4 text-accent-400"></i>
             Pune, India</span>
           <span class="inline-flex items-center gap-1"><i data-feather="briefcase" class="w-4 h-4 text-accent-400"></i>
             AI/ML Engineer</span>
           <span class="inline-flex items-center gap-1"><i data-feather="award" class="w-4 h-4 text-accent-400"></i>
             CGPA: 8.51</span>
-          <span id="repos" class="inline-flex items-center gap-1"><i data-feather="folder" class="w-4 h-4"></i> 0
-            repos</span>
+          <span id="repos" class="inline-flex items-center gap-1"><i data-feather="folder" class="w-4 h-4"></i> 3
+            Projects</span>
         </div>
       </div>
-      <div class="glass rounded-2xl p-6 border card">
+      <div class="glass rounded-2xl p-5 sm:p-6 border card">
         <div class="flex items-center gap-3 mb-3">
           <i data-feather="zap" class="w-5 h-5 text-accent-400"></i>
           <h3 class="font-display font-bold text-white text-lg">What I do</h3>
@@ -349,7 +527,7 @@
           <li class="flex gap-2"><span class="text-accent-400">•</span> Full-stack AI systems (FastAPI + React)</li>
         </ul>
       </div>
-      <div class="glass rounded-2xl p-6 border card">
+      <div class="glass rounded-2xl p-5 sm:p-6 border card">
         <div class="flex items-center gap-3 mb-3">
           <i data-feather="cpu" class="w-5 h-5 text-accent-400"></i>
           <h3 class="font-display font-bold text-white text-lg">Focus Areas</h3>
@@ -363,38 +541,128 @@
   </section>
 
   <!-- Skills -->
-  <section id="skills" class="container max-w-7xl mt-20 md:mt-32">
-    <div class="flex items-end justify-between mb-6">
+  <section id="skills" class="cv-auto container max-w-7xl mt-16 md:mt-24 lg:mt-32">
+    <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between mb-6">
       <h2 class="font-display text-2xl md:text-3xl font-extrabold">Skills &amp; Tools</h2>
       <span class="text-white/60 text-sm">Core competencies</span>
     </div>
-    <div id="skillsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div id="skillsGrid" class="grid min-h-[260px] grid-cols-1 gap-5 sm:min-h-[210px] sm:grid-cols-2 lg:grid-cols-3">
       <!-- Skills populated here -->
     </div>
   </section>
 
   <!-- Projects -->
-  <section id="projects" class="container max-w-7xl mt-20 md:mt-32">
-    <div class="flex items-end justify-between mb-6">
+  <section id="projects" class="cv-auto container max-w-7xl mt-16 md:mt-24 lg:mt-32">
+    <div class="flex items-end justify-between gap-4 mb-6">
       <h2 class="font-display text-2xl md:text-3xl font-extrabold">Featured Projects</h2>
-      <a id="viewAll" href="https://github.com/Ayush-Ranjane?tab=repositories" target="_blank" rel="noreferrer"
-        class="text-accent-300 hover:text-accent-200 text-sm">View all</a>
+      <span class="hidden text-white/60 text-sm sm:inline">Manual case studies</span>
     </div>
-    <div id="projectsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div id="projectsGrid" class="grid min-h-[980px] grid-cols-1 gap-6 sm:min-h-[760px] sm:grid-cols-2 lg:min-h-[560px] lg:grid-cols-3">
       <!-- Project cards injected here -->
     </div>
   </section>
 
-  <!-- Engineering Experience -->
-  <section id="experience" class="container max-w-7xl mt-20 md:mt-32">
-    <div class="flex items-end justify-between mb-8">
-      <h2 class="font-display text-3xl md:text-4xl font-extrabold text-white">Engineering Experience</h2>
+  <!-- Impact -->
+  <section id="impact" class="cv-auto container max-w-7xl mt-16 md:mt-24 lg:mt-32">
+    <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between mb-6">
+      <h2 class="font-display text-2xl md:text-3xl font-extrabold">Engineering Impact</h2>
+      <span class="text-white/60 text-sm">Evidence-focused metrics</span>
     </div>
-    <div class="glass p-8 md:p-10 rounded-3xl border border-white/10 card relative overflow-hidden">
+    <div id="impactGrid" class="grid min-h-[460px] grid-cols-1 gap-5 sm:min-h-[250px] sm:grid-cols-2 lg:min-h-[190px] lg:grid-cols-4">
+      <!-- Impact metrics injected here -->
+    </div>
+  </section>
+
+  <!-- Build Process -->
+  <section id="process" class="cv-auto container max-w-7xl mt-16 md:mt-24 lg:mt-32">
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,.85fr)_minmax(0,1.15fr)]">
+      <div class="glass rounded-3xl p-5 sm:p-7 border card">
+        <div class="flex items-center gap-3 mb-4">
+          <i data-feather="git-merge" class="w-5 h-5 text-accent-400"></i>
+          <h2 class="font-display text-2xl md:text-3xl font-extrabold">How I build AI systems</h2>
+        </div>
+        <p class="text-white/70 leading-relaxed">
+          I treat machine learning as an engineering system: define the business signal, build a clean data path,
+          validate model behavior, expose it through reliable APIs, and design dashboards that make decisions easier.
+        </p>
+      </div>
+      <div id="workflowGrid" class="grid min-h-[520px] grid-cols-1 gap-5 sm:min-h-[300px] sm:grid-cols-2">
+        <!-- Workflow injected here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Mini AI Demo -->
+  <section id="demo" class="cv-auto container max-w-7xl mt-16 md:mt-24 lg:mt-32">
+    <div class="glass rounded-3xl border p-5 sm:p-7 md:p-8">
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)]">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <i data-feather="activity" class="w-5 h-5 text-accent-400"></i>
+            <h2 class="font-display text-2xl md:text-3xl font-extrabold">Mini AI Demo</h2>
+          </div>
+          <p class="text-white/70 leading-relaxed">
+            A lightweight, on-page risk estimator that mirrors how I think about environmental intelligence:
+            combine live signals, normalize the inputs, and turn model output into a clear operational status.
+          </p>
+        </div>
+        <div class="grid gap-5">
+          <div>
+            <div class="flex items-center justify-between gap-4 text-sm text-white/80">
+              <label for="co2Input">CO₂ level</label>
+              <span><span id="co2Value">620</span> ppm</span>
+            </div>
+            <input id="co2Input" type="range" min="350" max="2000" value="620"
+              class="mt-3 w-full accent-accent-500">
+          </div>
+          <div>
+            <div class="flex items-center justify-between gap-4 text-sm text-white/80">
+              <label for="pmInput">PM2.5 level</label>
+              <span><span id="pmValue">38</span> µg/m³</span>
+            </div>
+            <input id="pmInput" type="range" min="5" max="250" value="38"
+              class="mt-3 w-full accent-accent-500">
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-base-800/60 p-5">
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <div class="text-sm text-white/50">Estimated status</div>
+                <div id="riskLabel" class="mt-1 font-display text-2xl font-bold text-accent-300">Healthy</div>
+              </div>
+              <div class="w-full sm:w-44">
+                <div class="skill-bar">
+                  <div id="riskFill" class="skill-fill" style="width: 22%;"></div>
+                </div>
+                <div id="riskScore" class="mt-2 text-right text-xs text-white/50">22% risk score</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Stack -->
+  <section id="portfolio-stack" class="cv-auto container max-w-7xl mt-16 md:mt-24 lg:mt-32">
+    <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between mb-6">
+      <h2 class="font-display text-2xl md:text-3xl font-extrabold">Tech Stack in This Portfolio</h2>
+      <span class="text-white/60 text-sm">Built with AI and AR</span>
+    </div>
+    <div id="stackGrid" class="grid min-h-[520px] grid-cols-1 gap-5 sm:min-h-[300px] sm:grid-cols-2 lg:min-h-[220px] lg:grid-cols-4">
+      <!-- Stack items injected here -->
+    </div>
+  </section>
+
+  <!-- Engineering Experience -->
+  <section id="experience" class="cv-auto container max-w-7xl mt-16 md:mt-24 lg:mt-32">
+    <div class="flex items-end justify-between mb-6 sm:mb-8">
+      <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold text-white">Engineering Experience</h2>
+    </div>
+    <div class="glass p-5 sm:p-8 md:p-10 rounded-3xl border border-white/10 card relative overflow-hidden">
       <div class="absolute -right-20 -top-20 w-64 h-64 bg-accent-500/10 rounded-full blur-3xl"></div>
       <div class="relative z-10">
-        <h3 class="font-display text-2xl font-bold text-white mb-2">GreenCO2 — AI System <span
-            class="text-xs font-bold tracking-wider uppercase text-accent-400 border border-accent-400/30 bg-accent-400/10 px-3 py-1 rounded-full ml-3 align-middle">Production-style
+        <h3 class="font-display text-xl sm:text-2xl font-bold text-white mb-2">GreenCO2 — AI System <span
+            class="mt-2 inline-flex text-xs font-bold tracking-wider uppercase text-accent-400 border border-accent-400/30 bg-accent-400/10 px-3 py-1 rounded-full sm:ml-3 align-middle">Production-style
             Project</span></h3>
         <ul class="mt-6 space-y-4 text-white/80">
           <li class="flex items-start gap-3"><i data-feather="check-circle"
@@ -411,9 +679,9 @@
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="container max-w-7xl mt-20 md:mt-32 mb-20">
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="glass p-6 md:p-8 rounded-2xl border">
+  <section id="contact" class="cv-auto container max-w-7xl mt-16 md:mt-24 lg:mt-32 mb-16 sm:mb-20">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div class="glass p-5 sm:p-6 md:p-8 rounded-2xl border">
         <h3 class="font-display text-2xl md:text-3xl font-extrabold mb-3">Let’s collaborate</h3>
         <p class="text-white/70 mb-8 leading-relaxed">Open to AI/ML internships, research opportunities, and real-world
           problem solving. Let’s build something impactful.</p>
@@ -436,29 +704,29 @@
               class="w-full rounded-xl bg-base-800/80 border border-white/10 px-4 py-3.5 outline-none focus:border-accent-500 focus:ring-1 focus:ring-accent-500 transition-all text-white placeholder-white/30"
               placeholder="Hello! I’d like to discuss..."></textarea>
           </div>
-          <button class="btn btn-primary" type="submit"><i data-feather="mail" class="w-5 h-5"></i> Send</button>
+          <button class="btn btn-primary sm:w-auto" type="submit"><i data-feather="mail" class="w-5 h-5"></i> Send</button>
           <p id="formNote" class="text-xs text-white/50 mt-2">This uses your email client via mailto.</p>
         </form>
       </div>
-      <div class="glass p-6 md:p-8 rounded-2xl border">
+      <div class="glass p-5 sm:p-6 md:p-8 rounded-2xl border">
         <h3 class="font-display text-xl md:text-2xl font-extrabold mb-3">Connect</h3>
         <div class="space-y-3">
           <a id="ctGithub" href="https://github.com/Ayush-Ranjane" target="_blank" rel="noreferrer"
-            class="flex items-center justify-between p-4 rounded-xl border border-white/10 hover:border-accent-400/40 card">
-            <div class="flex items-center gap-3">
+            class="flex min-w-0 items-center justify-between gap-3 p-4 rounded-xl border border-white/10 hover:border-accent-400/40 card">
+            <div class="flex min-w-0 items-center gap-3">
               <i data-feather="github" class="w-5 h-5"></i>
-              <div>
+              <div class="min-w-0">
                 <div class="font-semibold">GitHub</div>
-                <div class="text-sm text-white/60">Code, repos, and projects</div>
+                <div class="text-sm text-white/60">Code and projects</div>
               </div>
             </div>
             <i data-feather="arrow-up-right" class="w-5 h-5 text-white/60"></i>
           </a>
           <a href="https://www.linkedin.com/in/ayush-ranjane" target="_blank" rel="noreferrer"
-            class="flex items-center justify-between p-4 rounded-xl border border-white/10 hover:border-accent-400/40 card">
-            <div class="flex items-center gap-3">
+            class="flex min-w-0 items-center justify-between gap-3 p-4 rounded-xl border border-white/10 hover:border-accent-400/40 card">
+            <div class="flex min-w-0 items-center gap-3">
               <i data-feather="linkedin" class="w-5 h-5"></i>
-              <div>
+              <div class="min-w-0">
                 <div class="font-semibold">LinkedIn</div>
                 <div class="text-sm text-white/60">Professional network</div>
               </div>
@@ -466,12 +734,12 @@
             <i data-feather="arrow-up-right" class="w-5 h-5 text-white/60"></i>
           </a>
           <button id="copyEmail"
-            class="w-full flex items-center justify-between p-4 rounded-xl border border-white/10 hover:border-accent-400/40 card">
-            <div class="flex items-center gap-3">
+            class="w-full flex min-w-0 items-center justify-between gap-3 p-4 rounded-xl border border-white/10 hover:border-accent-400/40 card">
+            <div class="flex min-w-0 items-center gap-3">
               <i data-feather="copy" class="w-5 h-5"></i>
-              <div>
+              <div class="min-w-0 text-left">
                 <div class="font-semibold">Copy email</div>
-                <div class="text-sm text-white/60" id="emailLabel">ayushranjane@gmail.com</div>
+                <div class="break-all text-sm text-white/60" id="emailLabel">ayushranjane@gmail.com</div>
               </div>
             </div>
             <i data-feather="clipboard" class="w-5 h-5 text-white/60"></i>
@@ -483,7 +751,7 @@
 
   <footer class="border-t border-white/5 py-10">
     <div class="container max-w-7xl text-center text-white/60 text-sm">
-      <div class="flex items-center justify-center gap-2 mb-2">
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-2">
         <i data-feather="coffee" class="w-4 h-4"></i>
         <span>Built with care, animations, and a little gradient glow.</span>
       </div>
@@ -492,25 +760,140 @@
     </div>
   </footer>
 
+  <div id="projectModal" class="modal-backdrop fixed inset-0 z-[80] flex items-end bg-black/70 p-4 backdrop-blur-md sm:items-center sm:justify-center"
+    role="dialog" aria-modal="true" aria-hidden="true" inert aria-labelledby="modalTitle">
+    <div class="modal-panel glass max-h-[88vh] w-full max-w-3xl overflow-y-auto rounded-3xl border p-5 sm:p-7">
+      <div class="flex items-start justify-between gap-4">
+        <div class="min-w-0">
+          <div class="mb-2 text-xs font-bold uppercase tracking-widest text-accent-300">Project Details</div>
+          <h2 id="modalTitle" class="break-words font-display text-2xl font-extrabold text-white">Project</h2>
+          <p id="modalSummary" class="mt-3 text-sm leading-relaxed text-white/70"></p>
+        </div>
+        <button id="modalClose" type="button" aria-label="Close project details"
+          class="btn btn-ghost !h-11 !min-h-0 !w-11 !p-0 shrink-0">
+          <i data-feather="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="mt-6 grid gap-5 md:grid-cols-2">
+        <div class="rounded-2xl border border-white/10 bg-base-800/50 p-5">
+          <h3 class="mb-3 font-display font-bold text-white">Architecture</h3>
+          <ul id="modalArchitecture" class="space-y-2 text-sm text-white/70"></ul>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-base-800/50 p-5">
+          <h3 class="mb-3 font-display font-bold text-white">Result</h3>
+          <p id="modalResult" class="text-sm leading-relaxed text-white/70"></p>
+        </div>
+      </div>
+      <div class="mt-5 grid gap-3 sm:grid-cols-3">
+        <div class="rounded-2xl border border-accent-500/20 bg-accent-500/10 p-4">
+          <div class="text-xs uppercase tracking-widest text-accent-300">Dashboard</div>
+          <div class="mt-2 h-2 rounded-full bg-white/10"><div class="h-full w-4/5 rounded-full bg-accent-500"></div></div>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div class="text-xs uppercase tracking-widest text-white/50">API Layer</div>
+          <div class="mt-2 grid grid-cols-3 gap-1">
+            <span class="h-2 rounded bg-white/20"></span><span class="h-2 rounded bg-accent-400/70"></span><span class="h-2 rounded bg-white/20"></span>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div class="text-xs uppercase tracking-widest text-white/50">Model Signal</div>
+          <div class="mt-2 flex h-8 items-end gap-1">
+            <span class="h-3 flex-1 rounded bg-white/20"></span><span class="h-6 flex-1 rounded bg-accent-400/70"></span><span class="h-4 flex-1 rounded bg-white/20"></span><span class="h-8 flex-1 rounded bg-accent-500/80"></span>
+          </div>
+        </div>
+      </div>
+      <div id="modalActions" class="mt-6 flex flex-col gap-3 sm:flex-row"></div>
+    </div>
+  </div>
+
   <script>
+  const feather = (() => {
+    const attrs = 'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"';
+    const paths = {
+      activity: '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>',
+      award: '<circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>',
+      'arrow-up-right': '<line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>',
+      'bar-chart-2': '<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',
+      briefcase: '<rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>',
+      check: '<polyline points="20 6 9 17 4 12"/>',
+      'check-circle': '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>',
+      clipboard: '<path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/>',
+      code: '<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>',
+      coffee: '<path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v7a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/>',
+      copy: '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>',
+      cpu: '<rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/>',
+      database: '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/>',
+      download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>',
+      'external-link': '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>',
+      feather: '<path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/>',
+      folder: '<path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>',
+      github: '<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77 5.44 5.44 0 0 0 3.5 8.5c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>',
+      'git-merge': '<circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/>',
+      info: '<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>',
+      layers: '<polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>',
+      layout: '<rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/>',
+      linkedin: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>',
+      mail: '<path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22 6 12 13 2 6"/>',
+      'map-pin': '<path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+      monitor: '<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>',
+      moon: '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>',
+      send: '<line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>',
+      server: '<rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/>',
+      sun: '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>',
+      'trending-up': '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>',
+      user: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+      x: '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>',
+      zap: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>'
+    };
+    const toSvg = (name, options = {}) => `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" ${attrs} class="${options.class || ''}" aria-hidden="true">${paths[name] || paths.info}</svg>`;
+    const icons = Object.fromEntries(Object.keys(paths).map(name => [name, { toSvg: options => toSvg(name, options) }]));
+    return {
+      icons,
+      replace() {
+        document.querySelectorAll('[data-feather]').forEach(el => {
+          el.outerHTML = toSvg(el.getAttribute('data-feather'), { class: el.getAttribute('class') || '' });
+        });
+      }
+    };
+  })();
+
+  window.addEventListener('DOMContentLoaded', () => {
     feather.replace();
 
-    const GITHUB_USER = 'Ayush-Ranjane';
     const CONTACT_EMAIL = 'ayushranjane@gmail.com';
-    const headers = { 'Accept': 'application/vnd.github+json' };
 
     const els = {
       brandName: document.getElementById('brandName'),
       heroAvatar: document.getElementById('heroAvatar'),
       navAvatar: document.getElementById('navAvatar'),
+      roleRotator: document.getElementById('roleRotator'),
       repos: document.getElementById('repos'),
       skillsGrid: document.getElementById('skillsGrid'),
       projectsGrid: document.getElementById('projectsGrid'),
+      impactGrid: document.getElementById('impactGrid'),
+      workflowGrid: document.getElementById('workflowGrid'),
+      stackGrid: document.getElementById('stackGrid'),
+      co2Input: document.getElementById('co2Input'),
+      pmInput: document.getElementById('pmInput'),
+      co2Value: document.getElementById('co2Value'),
+      pmValue: document.getElementById('pmValue'),
+      riskLabel: document.getElementById('riskLabel'),
+      riskFill: document.getElementById('riskFill'),
+      riskScore: document.getElementById('riskScore'),
+      projectModal: document.getElementById('projectModal'),
+      modalClose: document.getElementById('modalClose'),
+      modalTitle: document.getElementById('modalTitle'),
+      modalSummary: document.getElementById('modalSummary'),
+      modalArchitecture: document.getElementById('modalArchitecture'),
+      modalResult: document.getElementById('modalResult'),
+      modalActions: document.getElementById('modalActions'),
       footerName: document.getElementById('footerName'),
       emailLabel: document.getElementById('emailLabel'),
       copyEmail: document.getElementById('copyEmail'),
       githubLink: document.getElementById('githubLink'),
-      viewAll: document.getElementById('viewAll'),
+      mobileGithubLink: document.getElementById('mobileGithubLink'),
+      menuToggle: document.getElementById('menuToggle'),
+      mobileMenu: document.getElementById('mobileMenu'),
       year: document.getElementById('year'),
       resumeBtn: document.getElementById('resumeBtn')
     };
@@ -535,6 +918,40 @@
     themeToggle.addEventListener('click', () => {
       applyTheme(document.documentElement.classList.contains('dark') ? 'light' : 'dark');
     });
+
+    // Mobile menu
+    function setMenu(open) {
+      if (!els.menuToggle || !els.mobileMenu) return;
+      els.menuToggle.classList.toggle('open', open);
+      els.mobileMenu.classList.toggle('open', open);
+      els.menuToggle.setAttribute('aria-expanded', String(open));
+    }
+
+    els.menuToggle?.addEventListener('click', () => {
+      setMenu(!els.mobileMenu.classList.contains('open'));
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => setMenu(false));
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setMenu(false);
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.matchMedia('(min-width: 768px)').matches) setMenu(false);
+    });
+
+    // Hero role rotator
+    const roles = ['AI Engineer', 'Data Scientist', 'System Builder'];
+    let roleIndex = 0;
+    if (els.roleRotator) {
+      window.setInterval(() => {
+        roleIndex = (roleIndex + 1) % roles.length;
+        els.roleRotator.textContent = roles[roleIndex];
+      }, 2200);
+    }
 
     // Scroll reveal
     const io = new IntersectionObserver(entries => {
@@ -567,25 +984,70 @@
       { title: 'Data Tools', icon: 'database', skills: ['Pandas', 'NumPy', 'Power BI'] }
     ];
 
+    const impactMetrics = [
+      { value: '50K+', label: 'Data points modeled', detail: 'Designed workflows for high-volume environmental and tabular datasets.' },
+      { value: '3', label: 'End-to-end AI systems', detail: 'From data preparation and modeling to APIs, dashboards, and deployment-ready UX.' },
+      { value: 'Sub-250ms', label: 'Interactive UI response', detail: 'Client-side portfolio interactions avoid network blocking and layout jank.' },
+      { value: '100%', label: 'Manual project control', detail: 'No GitHub auto-fetching; recruiters see curated case studies only.' }
+    ];
+
+    const workflowSteps = [
+      { title: 'Data contract first', icon: 'database', text: 'Define the signal, schema, and quality checks before touching the model.' },
+      { title: 'Model with baselines', icon: 'bar-chart-2', text: 'Compare interpretable baselines, anomaly detectors, and forecasting models before polishing.' },
+      { title: 'Ship through APIs', icon: 'server', text: 'Expose predictions through FastAPI-style endpoints with predictable request/response behavior.' },
+      { title: 'Design for decisions', icon: 'monitor', text: 'Translate model output into dashboards, alerts, and operational language.' }
+    ];
+
+    const portfolioStack = [
+      { title: 'HTML + Tailwind', icon: 'layout', text: 'Single-page build with responsive utilities and a production CSS compile path noted.' },
+      { title: 'Vanilla JavaScript', icon: 'code', text: 'No framework overhead; cards, modal, nav, and demo are rendered with focused functions.' },
+      { title: 'Feather Icons', icon: 'feather', text: 'Lightweight icon system kept consistent across navigation, cards, and controls.' },
+      { title: 'Performance UX', icon: 'zap', text: 'Deferred icon script, lazy images, reduced-motion handling, and zero GitHub API dependency.' }
+    ];
+
     els.skillsGrid.innerHTML = skillCategories.map(cat => `
-      <div class="glass rounded-2xl p-6 border card">
-        <div class="flex items-center gap-4 mb-5">
+      <div class="glass rounded-2xl p-5 sm:p-6 border card min-w-0">
+        <div class="flex min-w-0 items-center gap-4 mb-5">
           <div class="h-10 w-10 rounded-xl bg-accent-500/15 flex items-center justify-center shrink-0">
             ${feather.icons[cat.icon] ? feather.icons[cat.icon].toSvg({ class: 'w-5 h-5 text-accent-400' }) : ''}
           </div>
-          <h3 class="font-display font-bold text-white text-lg">${cat.title}</h3>
+          <h3 class="min-w-0 break-words font-display font-bold text-white text-lg">${cat.title}</h3>
         </div>
         <ul class="space-y-3">
           ${cat.skills.map(s => `
-            <li class="flex items-center gap-3 text-sm text-white/80">
+            <li class="flex min-w-0 items-center gap-3 text-sm text-white/80">
               <span class="h-1.5 w-1.5 rounded-full bg-accent-500 flex-shrink-0 shadow-[0_0_8px_rgba(255,122,0,0.6)]"></span>
-              ${s}
+              <span class="min-w-0 break-words">${s}</span>
             </li>
           `).join('')}
         </ul>
       </div>
     `).join('');
-    feather.replace();
+
+    function renderInfoCard(item) {
+      return `
+        <article class="glass rounded-2xl p-5 sm:p-6 border card min-w-0">
+          <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-accent-500/15">
+            ${feather.icons[item.icon] ? feather.icons[item.icon].toSvg({ class: 'w-5 h-5 text-accent-400' }) : ''}
+          </div>
+          <h3 class="font-display font-bold text-white">${item.title}</h3>
+          <p class="mt-3 text-sm leading-relaxed text-white/70">${item.text}</p>
+        </article>
+      `;
+    }
+
+    els.impactGrid.innerHTML = impactMetrics.map(metric => `
+      <article class="metric-card glass rounded-2xl p-5 sm:p-6 border card min-w-0">
+        <div class="relative z-10">
+          <div class="font-display text-3xl font-extrabold text-accent-300">${metric.value}</div>
+          <h3 class="mt-2 font-semibold text-white">${metric.label}</h3>
+          <p class="mt-3 text-sm leading-relaxed text-white/60">${metric.detail}</p>
+        </div>
+      </article>
+    `).join('');
+
+    els.workflowGrid.innerHTML = workflowSteps.map(renderInfoCard).join('');
+    els.stackGrid.innerHTML = portfolioStack.map(renderInfoCard).join('');
 
     // ── Featured Projects (Manual) ──
     const manualProjects = [
@@ -599,7 +1061,10 @@
             <li class="flex items-start gap-2"><span>•</span> <span>Integrated PostgreSQL for scalable data storage</span></li>
           </ul>`,
         tech: ['Python', 'PostgreSQL', 'FastAPI', 'React'],
-        featured: true
+        featured: true,
+        source: 'https://github.com/Ayush-Ranjane/GreenCO2.git',
+        live: ''
+
       },
       {
         name: 'AQI Prediction System',
@@ -610,7 +1075,9 @@
             <li class="flex items-start gap-2"><span>•</span> <span>Generated real-time predictions</span></li>
           </ul>`,
         tech: ['Python', 'ML Models'],
-        featured: true
+        featured: true,
+        source: 'https://github.com/Ayush-Ranjane/AQI-Prediction-Analysis-System.git',
+        live: 'https://portfolio-seven-beta-vt5k5cpfg7.vercel.app/'
       },
       {
         name: 'Titanic Survival Prediction',
@@ -621,160 +1088,168 @@
             <li class="flex items-start gap-2"><span>•</span> <span>Developed interactive prediction interface</span></li>
           </ul>`,
         tech: ['Scikit-learn'],
-        featured: true
+        featured: true,
+        source: 'https://github.com/Ayush-Ranjane/Titanic-Survival-Prediction.git',
+        live: 'https://titanic-survival-prediction-ayush.netlify.app/'
+      }
+    ];
+
+    const projectDetails = [
+      {
+        summary: 'Production-style industrial CO2 monitoring system with anomaly detection, analytics, and compliance dashboards.',
+        problem: 'Industrial CO2 data is difficult to monitor continuously, and compliance teams need fast anomaly visibility.',
+        solution: 'Built a real-time pipeline with Isolation Forest anomaly detection, FastAPI services, PostgreSQL storage, and a role-based dashboard.',
+        result: 'Converted raw time-series readings into compliance-ready alerts and operational insights for sustainability tracking.',
+        architecture: ['Sensor/time-series ingestion', 'FastAPI prediction and analytics layer', 'PostgreSQL historical storage', 'React compliance dashboard']
+      },
+      {
+        summary: 'Air quality forecasting workflow built around environmental data preparation, feature engineering, and model prediction.',
+        problem: 'Air quality readings are noisy and hard to interpret without prediction context.',
+        solution: 'Engineered environmental features and trained ML models to estimate AQI trends from pollutant inputs.',
+        result: 'Created a forecasting workflow that turns pollutant data into readable air-quality risk signals.',
+        architecture: ['Environmental data cleaning', 'Feature engineering pipeline', 'ML model prediction', 'Result interpretation layer']
+      },
+      {
+        summary: 'Classic classification project focused on clean preprocessing, feature selection, and interpretable prediction.',
+        problem: 'Passenger survival prediction requires useful features from incomplete tabular data.',
+        solution: 'Applied preprocessing, feature selection, and Scikit-learn classification to produce survival predictions.',
+        result: 'Built an interpretable ML baseline that demonstrates classification fundamentals and UI-ready inference.',
+        architecture: ['CSV/tabular preprocessing', 'Feature selection', 'Scikit-learn classifier', 'Interactive prediction interface']
       }
     ];
 
     function badge(topic) {
-      return `<span class="px-2.5 py-1 rounded-full bg-accent-500/10 border border-accent-500/20 text-[11px] font-medium text-accent-200">${topic}</span>`;
+      return `<span class="max-w-full break-words px-2.5 py-1 rounded-full bg-accent-500/10 border border-accent-500/20 text-[11px] font-medium text-accent-200">${topic}</span>`;
     }
 
-    function renderManualCard(p) {
+    function renderManualCard(p, index) {
+      const details = projectDetails[index];
+      const sourceDisabled = !p.source;
+      const liveDisabled = !p.live;
+      const sourceAttrs = sourceDisabled ? 'href="#" aria-disabled="true" tabindex="-1"' : `href="${p.source}" target="_blank" rel="noreferrer"`;
+      const liveAttrs = liveDisabled ? 'href="#" aria-disabled="true" tabindex="-1"' : `href="${p.live}" target="_blank" rel="noreferrer"`;
+      const disabledClass = 'opacity-60 cursor-not-allowed pointer-events-none';
       return `
-        <article class="glass rounded-3xl p-7 border card flex flex-col border-accent-500/20">
-          <div class="flex items-center gap-2 mb-4">
+        <article class="glass rounded-3xl p-5 sm:p-7 border card flex min-w-0 flex-col border-accent-500/20">
+          <div class="flex min-w-0 items-center gap-2 mb-4">
             <span class="px-2 py-0.5 rounded-full bg-accent-500/20 text-[10px] font-bold uppercase tracking-widest text-accent-300">Featured System</span>
           </div>
-          <h3 class="font-display font-bold text-white text-xl leading-tight">${p.name}</h3>
-          <div class="mt-4 mb-6 flex-1 text-sm leading-relaxed">${p.description}</div>
+          <h3 class="break-words font-display font-bold text-white text-lg sm:text-xl leading-tight">${p.name}</h3>
+          <p class="mt-3 text-sm leading-relaxed text-white/60">${details.summary}</p>
+          <div class="mt-5 mb-6 grid gap-4 text-sm leading-relaxed">
+            <div>
+              <div class="mb-1 text-[10px] font-bold uppercase tracking-widest text-accent-300">Problem</div>
+              <p class="text-white/70">${details.problem}</p>
+            </div>
+            <div>
+              <div class="mb-1 text-[10px] font-bold uppercase tracking-widest text-accent-300">Solution</div>
+              <p class="text-white/70">${details.solution}</p>
+            </div>
+            <div>
+              <div class="mb-1 text-[10px] font-bold uppercase tracking-widest text-accent-300">Result</div>
+              <p class="text-white/70">${details.result}</p>
+            </div>
+          </div>
           <div class="flex flex-wrap gap-2 mt-auto pt-5 border-t border-white/5">${p.tech.map(badge).join('')}</div>
+          <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+            <a ${sourceAttrs} class="btn btn-ghost !py-2 !text-xs flex-1 justify-center ${sourceDisabled ? disabledClass : ''}"><i data-feather="github" class="w-4 h-4"></i> Source</a>
+            <a ${liveAttrs} class="btn btn-primary !py-2 !text-xs flex-1 justify-center ${liveDisabled ? disabledClass : ''}"><i data-feather="external-link" class="w-4 h-4"></i> Live</a>
+          </div>
+          <button type="button" data-project-index="${index}" class="project-details btn btn-ghost !mt-3 !py-2 !text-xs">
+            <i data-feather="info" class="w-4 h-4"></i> View Details
+          </button>
         </article>
       `;
     }
 
-    function icon(name, cls = "w-4 h-4") {
-    return feather.icons[name]
-        ? feather.icons[name].toSvg({ class: cls })
-        : '';
+    function actionButton(label, href, iconName, primary = false) {
+      const disabled = !href;
+      const attrs = disabled ? 'href="#" aria-disabled="true" tabindex="-1"' : `href="${href}" target="_blank" rel="noreferrer"`;
+      return `<a ${attrs} class="btn ${primary ? 'btn-primary' : 'btn-ghost'} !py-2 !text-xs flex-1 ${disabled ? 'opacity-60 cursor-not-allowed pointer-events-none' : ''}">
+        <i data-feather="${iconName}" class="w-4 h-4"></i> ${label}
+      </a>`;
     }
 
-    function renderGithubCard(r) {
-      const homepage = r.homepage && r.homepage.startsWith('http') ? r.homepage : '';
-      const topics = (r.topics || []).slice(0, 4).map(badge).join('');
-      return `
-        <article class="glass rounded-3xl p-7 border card flex flex-col">
-          <div class="flex items-start justify-between gap-3 mb-3">
-            <a href="${r.html_url}" target="_blank" rel="noreferrer" class="font-bold text-white hover:text-accent-300 transition-colors">${r.name}</a>
-            <span class="text-[10px] px-2 py-1 rounded-md bg-white/5 border border-white/10 text-white/60 font-medium uppercase tracking-wider">${r.language || 'Code'}</span>
-          </div>
-          <p class="text-sm text-white/60 mt-1 line-clamp-3 flex-1 leading-relaxed">${r.description || 'No description provided.'}</p>
-          <div class="flex items-center gap-4 text-[11px] text-white/40 mt-5">
-            <span class="inline-flex items-center gap-1.5">${icon('star', 'w-3.5 h-3.5')} ${r.stargazers_count}</span>
-            <span class="inline-flex items-center gap-1.5">
-  ${icon('git-branch', 'w-3.5 h-3.5')} 
-  ${new Date(r.pushed_at).toLocaleDateString()}
-</span>
-          </div>
-          <div class="mt-4 flex flex-wrap gap-2">${topics}</div>
-          <div class="mt-6 flex gap-3">
-            <a href="${r.html_url}" target="_blank" rel="noreferrer" class="btn btn-ghost !py-2 !text-xs flex-1 justify-center"><i data-feather="github" class="w-4 h-4"></i> Source</a>
-            ${homepage ? `<a href="${homepage}" target="_blank" rel="noreferrer" class="btn btn-primary !py-2 !text-xs flex-1 justify-center"><i data-feather="external-link" class="w-4 h-4"></i> Demo</a>` : ''}
-          </div>
-        </article>
-      `;
+    function openProjectModal(index) {
+      const project = manualProjects[index];
+      const details = projectDetails[index];
+      if (!project || !details || !els.projectModal) return;
+
+      els.modalTitle.textContent = project.name;
+      els.modalSummary.textContent = details.summary;
+      els.modalResult.textContent = details.result;
+      els.modalArchitecture.innerHTML = details.architecture.map(item => `
+        <li class="flex gap-2"><span class="text-accent-400">&bull;</span><span>${item}</span></li>
+      `).join('');
+      els.modalActions.innerHTML = [
+        actionButton('Source', project.source, 'github'),
+        actionButton('Live', project.live, 'external-link', true)
+      ].join('');
+
+      els.projectModal.classList.add('open');
+      els.projectModal.removeAttribute('inert');
+      els.projectModal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('overflow-hidden');
+      els.modalClose?.focus();
+      feather.replace();
     }
 
-    // ── Fetch GitHub data with caching ──
-    async function fetchJSON(url, onUpdate = null) {
-    const CACHE_DURATION = 60 * 60 * 1000; // 1 hour
-    const cached = localStorage.getItem(url);
-
-    // 1️⃣ If cache exists → return immediately (fast UI)
-    if (cached) {
-        const parsed = JSON.parse(cached);
-
-        // Return cached data instantly
-        const cachedData = parsed.data;
-
-        // 2️⃣ Background refresh (if expired)
-        if (Date.now() - parsed.timestamp > CACHE_DURATION) {
-        fetch(url, { headers })
-            .then(res => res.json())
-            .then(freshData => {
-            localStorage.setItem(url, JSON.stringify({
-                data: freshData,
-                timestamp: Date.now()
-            }));
-
-            // 🔥 Update UI silently
-            if (onUpdate) onUpdate(freshData);
-            })
-            .catch(() => {});
-
-        }
-
-        return cachedData;
+    function closeProjectModal() {
+      els.projectModal?.classList.remove('open');
+      els.projectModal?.setAttribute('inert', '');
+      els.projectModal?.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('overflow-hidden');
     }
 
-    // 3️⃣ No cache → normal fetch
-    const r = await fetch(url, { headers });
-    if (!r.ok) throw new Error(await r.text());
-
-    const data = await r.json();
-
-    localStorage.setItem(url, JSON.stringify({
-        data: data,
-        timestamp: Date.now()
-    }));
-
-    return data;
+    function bindProjectDetails() {
+      document.querySelectorAll('.project-details').forEach(button => {
+        button.addEventListener('click', () => openProjectModal(Number(button.dataset.projectIndex)));
+      });
     }
 
-    async function init() {
-      try {
-        const user = await fetchJSON(  `https://api.github.com/users/${GITHUB_USER}`);
-        const repos = await fetchJSON(  `https://api.github.com/users/${GITHUB_USER}/repos?per_page=10&sort=updated`,
-            (freshRepos) => {
-                // Re-render projects silently
-                const githubProjects = freshRepos
-                .filter(r => !r.fork)
-                .sort((a, b) => (b.stargazers_count - a.stargazers_count) || (new Date(b.pushed_at) - new Date(a.pushed_at)))
-                .slice(0, 6);
+    function updateRiskDemo() {
+      if (!els.co2Input || !els.pmInput) return;
+      const co2 = Number(els.co2Input.value);
+      const pm = Number(els.pmInput.value);
+      const co2Score = Math.min(100, Math.max(0, ((co2 - 350) / 1650) * 100));
+      const pmScore = Math.min(100, Math.max(0, ((pm - 5) / 245) * 100));
+      const score = Math.round((co2Score * .52) + (pmScore * .48));
+      const label = score > 68 ? 'High Risk' : score > 38 ? 'Watch' : 'Healthy';
 
-                const githubHTML = githubProjects.map(renderGithubCard).join('');
-                const manualHTML = manualProjects.map(renderManualCard).join('');
+      els.co2Value.textContent = co2;
+      els.pmValue.textContent = pm;
+      els.riskLabel.textContent = label;
+      els.riskFill.style.width = `${score}%`;
+      els.riskScore.textContent = `${score}% risk score`;
+      els.riskLabel.className = `mt-1 font-display text-2xl font-bold ${score > 68 ? 'text-red-300' : score > 38 ? 'text-accent-300' : 'text-emerald-300'}`;
+    }
 
-                els.projectsGrid.innerHTML = manualHTML + githubHTML;
-                feather.replace();
-            }
-       );
+    function init() {
+      els.heroAvatar.src = 'images/gitprofil.jpeg';
+      els.navAvatar.src = 'images/chill.jpeg';
+      els.brandName.textContent = 'Ayush Ranjane';
 
-        // Populate avatar + header brand
-        els.heroAvatar.src = 'images/gitprofil.jpeg';
-        els.navAvatar.src = 'images/gitprofil.jpeg';
-        els.brandName.textContent = 'Ayush Ranjane';
-
-        // Repo count in About stats
-        if (els.repos) {
-          els.repos.innerHTML = `${feather.icons.folder.toSvg({ class: 'w-4 h-4' })} ${user.public_repos} Projects`;
-        }
-
-        if (user.html_url) {
-          els.githubLink.href = user.html_url;
-          els.viewAll.href = `${user.html_url}?tab=repositories`;
-        }
-
-        // Projects: Manual featured first, then GitHub repos
-        const githubProjects = repos
-          .filter(r => !r.fork)
-          .sort((a, b) => (b.stargazers_count - a.stargazers_count) || (new Date(b.pushed_at) - new Date(a.pushed_at)))
-          .slice(0, 6);
-
-        els.projectsGrid.innerHTML = "<p class='text-white/50'>Loading projects...</p>";
-
-        const manualHTML = manualProjects.map(renderManualCard).join('');
-        const githubHTML = githubProjects.map(renderGithubCard).join('');
-        els.projectsGrid.innerHTML = manualHTML + githubHTML;;
-        feather.replace(); // ADD THIS
-      } catch (e) {
-        console.error(e);
-        // Still show manual projects even if GitHub fails
-        els.projectsGrid.innerHTML = manualProjects.map(renderManualCard).join('') +
-          `<div class="glass rounded-2xl p-5 border text-white/60 col-span-full text-center">GitHub repos could not be loaded. Showing featured projects only.</div>`;
+      if (els.repos) {
+        els.repos.innerHTML = `${feather.icons.folder.toSvg({ class: 'w-4 h-4' })} ${manualProjects.length} Projects`;
       }
+
+      els.projectsGrid.innerHTML = manualProjects.map(renderManualCard).join('');
+      bindProjectDetails();
+      updateRiskDemo();
+      els.co2Input?.addEventListener('input', updateRiskDemo);
+      els.pmInput?.addEventListener('input', updateRiskDemo);
+      els.modalClose?.addEventListener('click', closeProjectModal);
+      els.projectModal?.addEventListener('click', (e) => {
+        if (e.target === els.projectModal) closeProjectModal();
+      });
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeProjectModal();
+      });
+      feather.replace();
     }
 
     init();
+  });
   </script>
 </body>
 
