@@ -243,8 +243,8 @@ const feather = (() => {
       // Hardcoded skills
       const skillCategories = [
         { title: 'Core Expertise', icon: 'cpu', skills: ['Machine Learning', 'Time-Series Forecasting', 'Anomaly Detection'] },
-        { title: 'Technologies', icon: 'code', skills: ['Python (Advanced)', 'FastAPI', 'PostgreSQL', 'React'] },
-        { title: 'Data Tools', icon: 'database', skills: ['Pandas', 'NumPy', 'Power BI'] }
+        { title: 'Technologies', icon: 'code', skills: ['Python (Advanced)', 'FastAPI', 'PostgreSQL', 'React', 'C++'] },
+        { title: 'Data Tools', icon: 'database', skills: ['Pandas', 'NumPy', 'Power BI', 'MS-Excel'] }
       ];
 
       const aiBuilds = [
